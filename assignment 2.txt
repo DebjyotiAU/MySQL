@@ -1,0 +1,61 @@
+
+-- Q)1
+CREATE TABLE EMP1
+(ID INT PRIMARY KEY, Name Varchar(10), Basic Decimal(6,2),Designation Varchar(10), Age INT );
+
+-- Q)2
+alter table EMP1
+modify column Basic INT;
+
+-- Q)3
+alter table emp1
+modify column Name varchar(15);
+
+-- Q)4
+CREATE TABLE EMP_trainee LIKE EMP1;
+ALTER TABLE EMP_trainee CHANGE ID Emp_id int;
+
+-- Q)5
+INSERT INTO EMP1 (ID, Name, Basic, Designation, Age)
+Values  
+(1, 'Rohit', 6700, 'Manager', 24),
+(2, 'Sunil', 6200, 'Engineer', 27),
+(3, 'Payal', 6300, 'Engineer', 25),
+(4, 'Kunal', 6700, 'Trainee', 28),
+(5, 'Sunita', 6230, 'Trainee', 26),
+(6, 'Bimal', 7000, 'Trainee', 25);
+
+-- Q)6
+INSERT INTO EMP_trainee (Emp_id, Name, Basic, Designation, Age)
+SELECT Emp_id, Name, Basic, Designation, Age
+FROM EMP1 WHERE Designation = 'Trainee';
+
+-- Q)7
+alter table EMP1
+add column Skills varchar(10),
+add column DOJ date;
+INSERT INTO EMP1(Skills,DOJ) values
+('Communication',2006-08-12),
+('Painting',2005-06-10),
+('Acting',2006-07-15),
+('Singing',2005-10-15),
+('Writing',2006-09-07);
+
+-- Q)8
+update EMP1 set Skills = 'c++'
+where ID in(1,2);
+
+-- Q)9
+alter table EMP1
+CHANGE column Age Age_in_Years date;
+
+-- Q)10
+alter table EMP_trainee
+drop column Age;
+
+-- Q)11
+rename table EMP1
+to EMP_Mgr_Engr;
+
+-- Q)12
+TRUNCATE EMP_Mgr_Engr;
